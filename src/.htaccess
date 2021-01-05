@@ -1,0 +1,13 @@
+RewriteEngine on
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+RewriteCond %{HTTP_HOST} ^nobrelarservicos.com.br$ [NC,OR] RewriteCond %{HTTP_HOST} ^www.nobrelarservicos.com.br$
+RewriteCond %{REQUEST_URI} !public/
+RewriteRule (.*) /public/$1 [L]
+
+
+
+#RewriteCond %{HTTP_HOST} ^^nobrelarservicos.com.br [NC,OR]
+#RewriteCond %{HTTP_HOST} ^www.^nobrelarservicos.com.br [NC]
+#RewriteRule ^(.*)$ https://www.^nobrelarservicos.com.br/$1 [L,R=301,NC]
